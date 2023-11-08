@@ -1,0 +1,50 @@
+/* Estilo para o título "Cadastro de Estudante" */
+h1 {
+    text-align: center;
+    color: #007bff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Estilo para o formulário de cadastro */
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o botão "Cadastrar aluno" */
+.btn-primary {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo para a tabela de estudantes */
+.table {
+    width: 100%;
+}
+
+/* Estilo para o título "Tabela de Estudantes" */
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+/* Estilo para os botões de "Editar" e "Deletar" na tabela */
+.btn-success,
+.btn-danger {
+    margin: 2px;
+}
+
+/* Estilo para os botões de "Editar" e "Deletar" na tabela */
+.btn-success,
+.btn-danger {
+    margin: 2px;
+}
+
+.bold-name {
+    font-weight: bold;
+}  
