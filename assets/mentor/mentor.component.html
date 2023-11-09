@@ -1,6 +1,6 @@
 <div class="container mt-4">
     <div class="card">
-        <h1>Cadastro de mentor</h1>
+        <h1>Cadastro de Mentor</h1>
         <form>
             <div class="form-group">
                 <label>Nome</label>
@@ -33,13 +33,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let StudentItem of StudentArray">
-                <td class="bold-name">{{StudentItem.name | uppercase}}</td>
-                <td>{{StudentItem.address }}</td>
-                <td>{{StudentItem.phone }}</td>
+            <tr *ngFor="let MentorItem of mentorArray">
+                <td class="bold-name">{{MentorItem.name | uppercase}}</td>
+                <td>{{MentorItem.address }}</td>
+                <td>{{MentorItem.phone }}</td>
                 <td>
-                    <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Editar</button>
-                    <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Deletar</button>
+                    <button type="button" class="btn btn-success" (click)="setUpdate(MentorItem)">Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="setDelete(MentorItem)">Deletar</button>
                 </td>
             </tr>
         </tbody>
