@@ -93,7 +93,7 @@ export class StudentComponent {
         "address" : this.address,
         "phone" : this.phone, 
     };
-        this.http.post("http://localhost:3000/students/create", bodyData).subscribe((resultData: any)=>
+        this.http.post("http://localhost:3000/students", bodyData).subscribe((resultData: any)=>
         {
             console.log(resultData);
             alert("Estudante criado com sucesso.");

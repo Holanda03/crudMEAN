@@ -1,6 +1,6 @@
 var express = require('express'); 
 var router = express.Router();
-var studentModel = require('../src/student/studentModel');
+var studentModel = require('../models/student/studentModel');
 
 router.post('/', async function (req, res, next) {
     const student = new studentModel(req.body);
