@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudentComponent } from './student/student.component';
 import { RouterOutlet } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        StudentComponent
+        StudentComponent,
+        HeaderComponent
     ],
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule],
     bootstrap: [AppComponent]
