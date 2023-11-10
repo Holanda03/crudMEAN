@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
+import { mentorService } from '../../services/mentor.service';
 
 @Component({
     selector: 'app-student',
@@ -7,17 +8,23 @@ import { StudentService } from '../../services/student.service';
     styleUrls: ['./student.component.css']
 })
 
-export class StudentComponent {
+export class StudentComponent implements OnInit {
     StudentArray: any[] = [];
+    MentorArray: any[] = [];
     currentStudentID = "";
     name: string = "";
     address: string = "";
     phone: string = "";
+    mentor: string = "";
 
-    constructor(private studentService: StudentService) { }
+    constructor(private studentService: StudentService, private mentorService: mentorService) { }
 
     ngOnInit() {
         this.getAllStudent();
+        this.mentorService.getAllMentors().subscribe((data: any) => {
+            this.MentorArray = data;
+          });
+      
     }
 
     getAllStudent() {
