@@ -20,7 +20,7 @@ router.post('/', async function (req, res, next) {
 router.get('/', async(req,res)=>{
    
     try{
-        const students = await studentModel.find({});
+        const students = await studentModel.find().populate('mentor', 'name');
         res.send(students);
     }
     catch(error)

@@ -35,6 +35,7 @@
         <th scope="col">Nome</th>
         <th scope="col">Endereço</th>
         <th scope="col">Telefone</th>
+        <th scope="col">Mentor</th>
         <th scope="col">Opções</th>
       </tr>
     </thead>
@@ -43,6 +44,7 @@
         <td class="bold-name">{{StudentItem.name | uppercase}}</td>
         <td>{{StudentItem.address }}</td>
         <td>{{StudentItem.phone }}</td>
+        <td>{{StudentItem.mentor.name }}</td>
         <td>
           <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Editar</button>
           <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Deletar</button>

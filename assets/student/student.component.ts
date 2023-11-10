@@ -38,6 +38,7 @@ export class StudentComponent implements OnInit {
         this.name = data.name;
         this.address = data.address;
         this.phone = data.phone;
+        this.mentor = data.mentor,
         this.currentStudentID = data._id;
     }
 
@@ -46,11 +47,16 @@ export class StudentComponent implements OnInit {
             name: this.name,
             address: this.address,
             phone: this.phone,
+            mentor: this.mentor
         };
 
         this.studentService.updateStudent(this.currentStudentID, bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Estudante atualizado.');
+            this.name = '';
+            this.address = '';
+            this.phone = '';
+            this.mentor = '';
             this.getAllStudent();
         });
     }
@@ -77,6 +83,7 @@ export class StudentComponent implements OnInit {
             name: this.name,
             address: this.address,
             phone: this.phone,
+            mentor: this.mentor
         };
 
         this.studentService.createStudent(bodyData).subscribe((resultData: any) => {
@@ -85,6 +92,7 @@ export class StudentComponent implements OnInit {
             this.name = '';
             this.address = '';
             this.phone = '';
+            this.mentor = '';
             this.getAllStudent();
         });
     }
