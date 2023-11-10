@@ -11,6 +11,7 @@ import { HeaderComponent } from '../header/header.component';
 import { MentorComponent } from '../mentor/mentor.component';
 import { myrouting } from './app.routing';
 import { StudentService } from '../../services/student.service';
+import { mentorService } from '../../services/mentor.service';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { StudentService } from '../../services/student.service';
         MentorComponent
     ],
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule, myrouting],
-    providers: [StudentService],
+    providers: [StudentService, mentorService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { Body } from "@angular/http/src/body";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { mentorService } from "../../services/mentor.service";
 
-@Component ({
+@Component({
     selector: 'app-mentor',
     templateUrl: './mentor.component.html',
     styleUrls: ['./mentor.component.css']
@@ -14,85 +14,72 @@ export class MentorComponent {
     name: string = "";
     address: string = "";
     phone: string = "";
-   
-    constructor(private http: HttpClient ) 
-    {
-        this.getAllStudent();
+
+    constructor(private mentorService: mentorService) { }
+
+    ngOnInit() {
+        this.getAllMentors();
     }
-    
-    getAllStudent() {
-        this.http.get("http://localhost:3000/mentors")
-        .subscribe((resultData: any)=>
-        {
+
+    getAllMentors() {
+        this.mentorService.getAllMentors().subscribe((resultData: any) => {
             console.log(resultData);
             this.mentorArray = resultData;
         });
     }
-  
-    setUpdate(data: any) 
-    {
-    this.name = data.name;
-    this.address = data.address;
-    this.phone = data.phone;
-    this.currentMentorId = data._id;
-    
+
+    setUpdate(data: any) {
+        this.name = data.name;
+        this.address = data.address;
+        this.phone = data.phone;
+        this.currentMentorId = data._id;
     }
-    
-    UpdateRecords()
-    {
+
+    UpdateRecords() {
         let bodyData = {
-        "name" : this.name,
-        "address" : this.address,
-        "phone" : this.phone,
+            "name": this.name,
+            "address": this.address,
+            "phone": this.phone,
         };
-        
-        this.http.patch("http://localhost:3000/mentors"+ "/" + this.currentMentorId,bodyData).subscribe((resultData: any)=>
-        {
+
+        this.mentorService.updateMentor(this.currentMentorId, bodyData).subscribe((resultData: any) => {
             console.log(resultData);
-            alert("Mentor atualizado.");
-            this.getAllStudent();
-        
+            alert('Mentor atualizado.');
+            this.getAllMentors();
         });
     }
-    
+
     setDelete(data: any) {
-        this.http.delete("http://localhost:3000/mentors"+ "/" + data._id).subscribe((resultData: any)=>
-        {
+        this.mentorService.deleteMentor(data._id).subscribe((resultData: any) => {
             console.log(resultData);
-            alert("Mentor deletado.");
-            this.getAllStudent();
-    
+            alert('Mentor deletado.');
+            this.getAllMentors();
         });
-        }
-        
-    
-    save()
-    {
-        if(this.currentMentorId == '')
-        {
+    }
+
+    save() {
+        if (this.currentMentorId == '') {
             this.register();
         }
-        else
-        {
-        this.UpdateRecords();
-        }       
+        else {
+            this.UpdateRecords();
+        }
     }
-    
-    register()
-    {
+
+    register() {
         let bodyData = {
-        "name" : this.name,
-        "address" : this.address,
-        "phone" : this.phone, 
-    };
-        this.http.post("http://localhost:3000/mentors", bodyData).subscribe((resultData: any)=>
-        {
+            "name": this.name,
+            "address": this.address,
+            "phone": this.phone,
+        };
+
+        this.mentorService.createMentor(bodyData).subscribe((resultData: any) => {
             console.log(resultData);
-            alert("Mentor criado com sucesso.");
+            alert('Mentor criado com sucesso.');
             this.name = '';
             this.address = '';
-            this.phone  = '';
-            this.getAllStudent();
+            this.phone = '';
+            this.getAllMentors();
         });
     }
 }
