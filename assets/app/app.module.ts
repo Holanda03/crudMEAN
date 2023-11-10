@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { HeaderComponent } from '../header/header.component';
 import { MentorComponent } from '../mentor/mentor.component';
 import { myrouting } from './app.routing';
+import { StudentService } from '../../services/student.service';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { myrouting } from './app.routing';
         MentorComponent
     ],
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule, myrouting],
+    providers: [StudentService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

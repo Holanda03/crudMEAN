@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import {Component} from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import {Http, Response, Headers } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../../services/student.service';
 
 @Component({
     selector: 'app-student',
@@ -11,95 +8,76 @@ import { Observable } from 'rxjs';
 })
 
 export class StudentComponent {
-    StudentArray : any[] = [];
+    StudentArray: any[] = [];
     currentStudentID = "";
     name: string = "";
     address: string = "";
     phone: string = "";
-    
-    constructor(private http: HttpClient ) 
-    {
+
+    constructor(private studentService: StudentService) { }
+
+    ngOnInit() {
         this.getAllStudent();
     }
-    
+
     getAllStudent() {
-        this.http.get("http://localhost:3000/students")
-        .subscribe((resultData: any)=>
-        {
+        this.studentService.getAllStudents().subscribe((resultData: any) => {
             console.log(resultData);
             this.StudentArray = resultData;
         });
     }
 
-    // getAllStudent() {
-    //     return this.http.get('http://localhost:3000/students')
-    //     .map((response: Response) => response.json())
-    //     .catch((response: Response) => Observable.throw(response.json()));
-    // }
-    
-    setUpdate(data: any) 
-    {
-    this.name = data.name;
-    this.address = data.address;
-    this.phone = data.phone;
-    this.currentStudentID = data._id;
-    
+    setUpdate(data: any) {
+        this.name = data.name;
+        this.address = data.address;
+        this.phone = data.phone;
+        this.currentStudentID = data._id;
     }
-    
-    UpdateRecords()
-    {
+
+    updateRecords() {
         let bodyData = {
-        "name" : this.name,
-        "address" : this.address,
-        "phone" : this.phone,
+            name: this.name,
+            address: this.address,
+            phone: this.phone,
         };
-        
-        this.http.patch("http://localhost:3000/students"+ "/" + this.currentStudentID,bodyData).subscribe((resultData: any)=>
-        {
+
+        this.studentService.updateStudent(this.currentStudentID, bodyData).subscribe((resultData: any) => {
             console.log(resultData);
-            alert("Estudante atualizado.");
+            alert('Estudante atualizado.');
             this.getAllStudent();
-        
         });
     }
-    
+
     setDelete(data: any) {
-        this.http.delete("http://localhost:3000/students"+ "/" + data._id).subscribe((resultData: any)=>
-        {
+        this.studentService.deleteStudent(data._id).subscribe((resultData: any) => {
             console.log(resultData);
-            alert("Estudante deletado.");
+            alert('Estudante deletado.');
             this.getAllStudent();
-    
         });
-        }
-        
-    
-    save()
-    {
-        if(this.currentStudentID == '')
-        {
+    }
+
+    save() {
+        if (this.currentStudentID == '') {
             this.register();
         }
-        else
-        {
-        this.UpdateRecords();
-        }       
+        else {
+            this.updateRecords();
+        }
     }
-    
-    register()
-    {
+
+    register() {
         let bodyData = {
-        "name" : this.name,
-        "address" : this.address,
-        "phone" : this.phone, 
-    };
-        this.http.post("http://localhost:3000/students", bodyData).subscribe((resultData: any)=>
-        {
+            name: this.name,
+            address: this.address,
+            phone: this.phone,
+        };
+
+        this.studentService.createStudent(bodyData).subscribe((resultData: any) => {
             console.log(resultData);
-            alert("Estudante criado com sucesso.");
+            alert('Estudante criado com sucesso.');
             this.name = '';
             this.address = '';
-            this.phone  = '';
+            this.phone = '';
             this.getAllStudent();
         });
     }
