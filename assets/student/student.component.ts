@@ -53,6 +53,7 @@ export class StudentComponent implements OnInit {
         this.studentService.updateStudent(this.currentStudentID, bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Estudante atualizado.');
+            this.currentStudentID = '';
             this.name = '';
             this.address = '';
             this.phone = '';
@@ -89,6 +90,7 @@ export class StudentComponent implements OnInit {
         this.studentService.createStudent(bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Estudante criado com sucesso.');
+            this.currentStudentID = '';
             this.name = '';
             this.address = '';
             this.phone = '';

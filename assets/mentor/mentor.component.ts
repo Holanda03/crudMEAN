@@ -35,7 +35,7 @@ export class MentorComponent {
         this.currentMentorId = data._id;
     }
 
-    UpdateRecords() {
+    updateRecords() {
         let bodyData = {
             "name": this.name,
             "address": this.address,
@@ -45,6 +45,10 @@ export class MentorComponent {
         this.mentorService.updateMentor(this.currentMentorId, bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Mentor atualizado.');
+            this.currentMentorId = '';
+            this.name = '';
+            this.address = '';
+            this.phone = '';
             this.getAllMentors();
         });
     }
@@ -62,7 +66,7 @@ export class MentorComponent {
             this.register();
         }
         else {
-            this.UpdateRecords();
+            this.updateRecords();
         }
     }
 
@@ -76,6 +80,7 @@ export class MentorComponent {
         this.mentorService.createMentor(bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Mentor criado com sucesso.');
+            this.currentMentorId = '';
             this.name = '';
             this.address = '';
             this.phone = '';

@@ -27,11 +27,12 @@ export class SubjectComponent {
     }
 
     setUpdate(data: any) {
+        this.currentSubjectId = data._id;
         this.name = data.name;
         this.field = data.field;
     }
 
-    UpdateRecords() {
+    updateRecords() {
         let bodyData = {
             "name": this.name,
             "field": this.field,
@@ -40,6 +41,9 @@ export class SubjectComponent {
         this.subjectService.updateSubject(this.currentSubjectId, bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Matéria atualizada.');
+            this.currentSubjectId = '';
+            this.name = '';
+            this.field = '';
             this.getAllSubjects();
         });
     }
@@ -57,7 +61,7 @@ export class SubjectComponent {
             this.register();
         }
         else {
-            this.UpdateRecords();
+            this.updateRecords();
         }
     }
 
@@ -70,6 +74,7 @@ export class SubjectComponent {
         this.subjectService.createSubject(bodyData).subscribe((resultData: any) => {
             console.log(resultData);
             alert('Matéria criada com sucesso.');
+            this.currentSubjectId = '';
             this.name = '';
             this.field = '';
             this.getAllSubjects();
