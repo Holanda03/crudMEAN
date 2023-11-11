@@ -41,10 +41,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let StudentItem of StudentArray">
-        <td class="bold-name">{{StudentItem.name | uppercase}}</td>
-        <td>{{StudentItem.address }}</td>
-        <td>{{StudentItem.phone }}</td>
-        <td>{{StudentItem.mentor.name }}</td>
+        <td class="bold-name">{{ StudentItem.name | uppercase }}</td>
+        <td>{{ StudentItem.address }}</td>
+        <td>{{ StudentItem.phone }}</td>
+        <td>{{ StudentItem.mentor.name }}</td>
         <td>
           <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Editar</button>
           <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Deletar</button>
