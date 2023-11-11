@@ -17,6 +17,12 @@
                 <input type="text" class="form-control" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}"
                     id="phone" placeholder="Informe o número">
             </div>
+            <div class="form-group">
+                <label>Matéria:</label>
+                <select id="subject" [(ngModel)]="subject" name="subject" [ngModelOptions]="{standalone: true}" required>
+                  <option *ngFor="let subject of SubjectArray" [value]="subject._id">{{ subject.name }}</option>
+                </select>
+            </div>
             <button type="submit" (click)="save()" class="btn btn-primary">Cadastrar mentor</button>
         </form>
     </div>
@@ -29,14 +35,16 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Endereço</th>
                 <th scope="col">Telefone</th>
+                <th scope="col">Matéria</th>
                 <th scope="col">Opções</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let MentorItem of mentorArray">
-                <td class="bold-name">{{MentorItem.name | uppercase}}</td>
-                <td>{{MentorItem.address }}</td>
-                <td>{{MentorItem.phone }}</td>
+            <tr *ngFor="let MentorItem of MentorArray">
+                <td class="bold-name">{{ MentorItem.name | uppercase }}</td>
+                <td>{{ MentorItem.address }}</td>
+                <td>{{ MentorItem.phone }}</td>
+                <td>{{ MentorItem.subject.name }}</td>
                 <td>
                     <button type="button" class="btn btn-success" (click)="setUpdate(MentorItem)">Editar</button>
                     <button type="button" class="btn btn-danger" (click)="setDelete(MentorItem)">Deletar</button>

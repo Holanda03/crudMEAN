@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
-import { mentorService } from '../../services/mentor.service';
+import { MentorService } from '../../services/mentor.service';
 
 @Component({
     selector: 'app-student',
@@ -17,13 +17,13 @@ export class StudentComponent implements OnInit {
     phone: string = "";
     mentor: string = "";
 
-    constructor(private studentService: StudentService, private mentorService: mentorService) { }
+    constructor(private studentService: StudentService, private mentorService: MentorService) { }
 
     ngOnInit() {
         this.getAllStudent();
         this.mentorService.getAllMentors().subscribe((data: any) => {
             this.MentorArray = data;
-          });
+        });
       
     }
 
@@ -44,10 +44,10 @@ export class StudentComponent implements OnInit {
 
     updateRecords() {
         let bodyData = {
-            name: this.name,
-            address: this.address,
-            phone: this.phone,
-            mentor: this.mentor
+            "name": this.name,
+            "address": this.address,
+            "phone": this.phone,
+            "mentor": this.mentor
         };
 
         this.studentService.updateStudent(this.currentStudentID, bodyData).subscribe((resultData: any) => {
@@ -81,10 +81,10 @@ export class StudentComponent implements OnInit {
 
     register() {
         let bodyData = {
-            name: this.name,
-            address: this.address,
-            phone: this.phone,
-            mentor: this.mentor
+            "name": this.name,
+            "address": this.address,
+            "phone": this.phone,
+            "mentor": this.mentor
         };
 
         this.studentService.createStudent(bodyData).subscribe((resultData: any) => {

@@ -7,7 +7,7 @@ import { SubjectService } from "../../services/subject.service";
     styleUrls: ['./subject.component.css']
 })
 
-export class SubjectComponent {
+export class SubjectComponent implements OnInit {
     SubjectArray: any[] = []
     currentSubjectId = "";
     name: string = "";

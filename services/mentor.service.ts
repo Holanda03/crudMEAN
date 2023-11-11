@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class mentorService {
+export class MentorService {
     private apiUrl = 'http://localhost:3000/mentors';
 
     constructor(private http: HttpClient) { }

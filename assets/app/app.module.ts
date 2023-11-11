@@ -11,9 +11,9 @@ import { HeaderComponent } from '../header/header.component';
 import { MentorComponent } from '../mentor/mentor.component';
 import { myrouting } from './app.routing';
 import { StudentService } from '../../services/student.service';
-import { mentorService } from '../../services/mentor.service';
 import { SubjectComponent } from '../subject/subject.component';
 import { SubjectService } from '../../services/subject.service';
+import { MentorService } from '../../services/mentor.service';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { SubjectService } from '../../services/subject.service';
         SubjectComponent
     ],
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule, myrouting],
-    providers: [StudentService, mentorService, SubjectService],
+    providers: [StudentService, MentorService, SubjectService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
