@@ -12,6 +12,7 @@ import { MentorComponent } from '../mentor/mentor.component';
 import { myrouting } from './app.routing';
 import { StudentService } from '../../services/student.service';
 import { mentorService } from '../../services/mentor.service';
+import { SubjectComponent } from '../subject/subject.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { mentorService } from '../../services/mentor.service';
         AppComponent,
         StudentComponent,
         HeaderComponent,
-        MentorComponent
+        MentorComponent,
+        SubjectComponent
     ],
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule, myrouting],
     providers: [StudentService, mentorService],
