@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var appRoutes = require('./routes/app');
 var studentRoutes = require('./routes/student')
 var mentorRoutes = require('./routes/mentor');
-var subjectRoutes = require('./routes/student');
+var subjectRoutes = require('./routes/subject');
 
 var app = express();
 mongoose.connect('mongodb://127.0.0.1:27017/node-angular-dois');

@@ -28,8 +28,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let SubjectItem of SubjectArray">
-          <td class="bold-name">{{SubjectArray.name | uppercase}}</td>
-          <td>{{SubjectArray.field }}</td>
+          <td class="bold-name">{{SubjectItem.name | uppercase}}</td>
+          <td>{{SubjectItem.field }}</td>
           <td>
             <button type="button" class="btn btn-success" (click)="setUpdate(SubjectItem)">Editar</button>
             <button type="button" class="btn btn-danger" (click)="setDelete(SubjectItem)">Deletar</button>

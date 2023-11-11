@@ -13,6 +13,7 @@ import { myrouting } from './app.routing';
 import { StudentService } from '../../services/student.service';
 import { mentorService } from '../../services/mentor.service';
 import { SubjectComponent } from '../subject/subject.component';
+import { SubjectService } from '../../services/subject.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { SubjectComponent } from '../subject/subject.component';
         SubjectComponent
     ],
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule, myrouting],
-    providers: [StudentService, mentorService],
+    providers: [StudentService, mentorService, SubjectService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
