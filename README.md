@@ -19,7 +19,7 @@ Como foi utilizada a stack MEAN para o projeto, as tecnologias são:
 
 ## Como rodar o projeto:
 
-1. Intalar o node_modules pelo terminal:
+1. Instalar o node_modules pelo terminal:
 ```
 npm install
 ```
